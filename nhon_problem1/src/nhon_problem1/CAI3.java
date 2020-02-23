@@ -44,9 +44,8 @@ public class CAI3 {
 			System.out.println("");
 			readAdditionalQuiz();
 		}
-			
-		
 	}
+	
 	private void displayIncorrectResponse() {
 		responseNum = rand.nextInt(4);
 		switch(responseNum) {
@@ -65,8 +64,10 @@ public class CAI3 {
 		}
 		
 	}
+	
 	private void displayCorrectResponse() {
 		responseNum = rand.nextInt(4);
+		
 		switch(responseNum) {
 		case 0:
 			System.out.println("Very good!");
@@ -82,9 +83,11 @@ public class CAI3 {
 			break;
 		}
 	}
+	
 	private void isAnswerCorrect() {
 		int userNum = getuserAnswer();
 		int answer = getAnswer();
+		
 		if (userNum == answer) {
 			displayCorrectResponse();
 			setcorrectCount();
@@ -93,47 +96,60 @@ public class CAI3 {
 			displayIncorrectResponse();
 		}	
 	}
+	
 	private void readResponse() {
 		num3 = scan.nextInt();
 		setuserAnswer(num3);
 	}
+	
 	private void askQuestion() {
 		num1 = rand.nextInt(10);
 		num2 = rand.nextInt(10);
 		setAnswer(num1, num2);
 		System.out.println("What is " + num1 + " times "+ num2 + "?");
 	}
+	
 	private void quiz() {
 		correctCount = 0;
+		
 		for(int i = 0; i < 10; i++) {
 			System.out.print("Question " + (i + 1) + ": ");
 			askQuestion();
 			readResponse();
 			isAnswerCorrect();
 		}
+		
 		displayCompletionMessage();
 	}
+	
 	private void setAnswer(int num1, int num2) {
 		Answer = num1 * num2;
 	}
+	
 	public int getAnswer() {
 		return Answer;
 	}
+	
 	private void setuserAnswer(int num) {
 		userAnswer = num;
 	}
+	
 	public int getuserAnswer() {
 		return userAnswer;
 	}
+	
 	private void setcorrectCount() {
 		correctCount = correctCount + 1;;
 	}
+	
 	public int getcorrectCount() {
 		return correctCount;
 	}
+	
 	public static void main(String[] args) {
 		CAI3 app = new CAI3();
 		app.quiz();
 	}
+	
 
 }

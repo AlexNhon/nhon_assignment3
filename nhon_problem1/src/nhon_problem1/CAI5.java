@@ -34,6 +34,7 @@ public class CAI5 {
 		System.out.println("5: Combination");
 		typeChoice = scan.nextInt();
 	}
+	
 	private void readDifficulty() {
 		System.out.println("Choose a difficulty rating:");
 		System.out.println("1: Numbers up to 1 digit");
@@ -42,8 +43,10 @@ public class CAI5 {
 		System.out.println("4: Numbers up to 4 digits");
 		difficultyChoice = scan.nextInt();		
 	}
+	
 	private int generateQuestionArgument() {
 		int randnum = 0;
+		
 		switch(difficultyChoice) {
 		case 1:
 			randnum = rand.nextInt(10);
@@ -58,13 +61,16 @@ public class CAI5 {
 			randnum = rand.nextInt(10000);
 			break;
 		}
+		
 		return randnum;
 	}
+	
 	private void readAdditionalQuiz() {
 		System.out.println("Would you like to take another quiz?:");
 		System.out.println("1: Yes");
 		System.out.println("2: No");
 		additionalChoice = scan.nextInt();
+		
 		if (additionalChoice == 1) {
 			quiz();
 		}
@@ -76,6 +82,7 @@ public class CAI5 {
 	
 	private void displayCompletionMessage() {
 		double score = (getcorrectCount() / 10.0) * 100;
+		
 		if(score >= 75) {
 			System.out.println("Your score was " + score + "%");
 			System.out.println("Congratulations! You are ready to go to the next level!");
@@ -93,6 +100,7 @@ public class CAI5 {
 	}
 	private void displayIncorrectResponse() {
 		responseNum = rand.nextInt(4);
+		
 		switch(responseNum) {
 		case 0:
 			System.out.println("No. Please Try Again.");
@@ -111,6 +119,7 @@ public class CAI5 {
 	}
 	private void displayCorrectResponse() {
 		responseNum = rand.nextInt(4);
+		
 		switch(responseNum) {
 		case 0:
 			System.out.println("Very good!");
@@ -130,6 +139,7 @@ public class CAI5 {
 		if(typeChoice >= 1 && typeChoice <=3 || fifthChoice >=0 && fifthChoice <=2) {
 				int userNum = getuserAnswer();
 				int answer = getAnswer();
+				
 				if (userNum == answer) {
 					displayCorrectResponse();
 					setcorrectCount();
@@ -141,6 +151,7 @@ public class CAI5 {
 		else if(typeChoice == 4 || fifthChoice == 3) {
 			double userNum = getuserAnswerDiv();
 			double answer = getAnswerDiv();
+			
 			if (userNum == answer) {
 				displayCorrectResponse();
 				setcorrectCount();
@@ -175,6 +186,7 @@ public class CAI5 {
 		if(typeChoice == 4) {
 			divnum1 = generateQuestionArgument();
 			divnum2 = generateQuestionArgument();
+			
 			if(divnum2 == 0) {
 				divnum2 = divnum2 + 1;
 			}
@@ -185,6 +197,7 @@ public class CAI5 {
 			num2 = generateQuestionArgument();
 			setAnswer();
 		}
+		
 		switch(typeChoice) {
 		case 1:
 			System.out.println("What is " + num1 + " plus "+ num2 + "?");
@@ -199,30 +212,35 @@ public class CAI5 {
 		case 4:
 			System.out.println("What is " + divnum1 + " divided by "+ divnum2 + "? (Round up to 1 decimal place)");
 			break;
-		case 5:
+		case 5: 
+			// Combination of first 4 cases
 			fifthChoice = rand.nextInt(4);
 			switch(fifthChoice) {
 			case 0:
 				num1 = generateQuestionArgument();
 				num2 = generateQuestionArgument();
+				
 				setAnswer();
 				System.out.println("What is " + num1 + " plus "+ num2 + "?");
 				break;
 			case 1:
 				num1 = generateQuestionArgument();
 				num2 = generateQuestionArgument();
+				
 				setAnswer();
 				System.out.println("What is " + num1 + " times "+ num2 + "?");
 				break;
 			case 2:
 				num1 = generateQuestionArgument();
 				num2 = generateQuestionArgument();
+				
 				setAnswer();
 				System.out.println("What is " + num1 + " minus "+ num2 + "?");;
 				break;
 			case 3:
 				divnum1 = generateQuestionArgument();
 				divnum2 = generateQuestionArgument();
+				
 				if(divnum2 == 0) {
 					divnum2 = divnum2 + 1;
 				}
@@ -234,16 +252,19 @@ public class CAI5 {
 		}	
 	}
 	private void quiz() {
-		readDifficulty();
-		readProblemType();
 		correctCount = 0;
 		fifthChoice = 10;
+		
+		readDifficulty();
+		readProblemType();
+		
 		for(int i = 0; i < 10; i++) {
 			System.out.print("Question " + (i + 1) + ": ");
 			askQuestion();
 			readResponse();
 			isAnswerCorrect();
 		}
+		
 		displayCompletionMessage();
 	}
 	private void setAnswer() {
@@ -262,6 +283,7 @@ public class CAI5 {
 			AnswerDiv = Math.round(AnswerDiv * 10) / 10.0;
 			break;
 		}
+		
 		switch(fifthChoice) {
 		case 0:
 			Answer = num1 + num2;
@@ -279,30 +301,39 @@ public class CAI5 {
 		}
 		
 	}
+	
 	public int getAnswer() {
 		return Answer;
 	}
+	
 	public double getAnswerDiv() {
 		return AnswerDiv;
 	}
+	
 	private void setuserAnswer(int num) {
 		userAnswer = num;
 	}
+	
 	private void setuserAnswerDiv(double num) {
 		userAnswerDiv = num;
 	}
+	
 	public int getuserAnswer() {
 		return userAnswer;
 	}
+	
 	public double getuserAnswerDiv() {
 		return userAnswerDiv;
 	}
+	
 	private void setcorrectCount() {
 		correctCount = correctCount + 1;;
 	}
+	
 	public int getcorrectCount() {
 		return correctCount;
 	}
+	
 	public static void main(String[] args) {
 		CAI5 app = new CAI5();
 		app.quiz();

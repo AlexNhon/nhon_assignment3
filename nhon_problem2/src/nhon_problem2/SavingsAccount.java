@@ -15,13 +15,13 @@ public class SavingsAccount {
 		annualInterestRate = 0.0;
 		savingsBalance = balance;
 	}
-	public void modifyInterestRate(double rate) {
-		setInterestRate(rate);
-	}
+	
 	public void calculateMonthlyInterest() {
-		System.out.println("Initial Balance: $" + savingsBalance);
 		double monthlyInterest = 0.0;
+		
+		System.out.println("Initial Balance: $" + savingsBalance);
 		System.out.format("%-6s %-15s %1.15s \n", "Month", "Interest Rate", "Balance");
+		
 		for(int i = 0; i <= 12; i++) {
 			if(i == 12) {
 				modifyInterestRate(0.05);
@@ -34,7 +34,12 @@ public class SavingsAccount {
 			savingsBalance = savingsBalance + monthlyInterest;
 			System.out.format("%-6s %-15s %1.15s \n", (i + 1), dfrate.format(annualInterestRate), dfbal.format(savingsBalance));
 		}
+		
 		System.out.println("");
+	}
+
+	public void modifyInterestRate(double rate) {
+		setInterestRate(rate);
 	}
 	private void setInterestRate(double rate) {
 		annualInterestRate = rate;

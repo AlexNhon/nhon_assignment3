@@ -25,8 +25,10 @@ public class CAI4 {
 		System.out.println("4: Numbers up to 4 digits");
 		userChoice = scan.nextInt();		
 	}
+	
 	private int generateQuestionArgument() {
 		int randnum = 0;
+		
 		switch(userChoice) {
 		case 1:
 			randnum = rand.nextInt(10);
@@ -41,13 +43,16 @@ public class CAI4 {
 			randnum = rand.nextInt(10000);
 			break;
 		}
+		
 		return randnum;
 	}
+	
 	private void readAdditionalQuiz() {
 		System.out.println("Would you like to take another quiz?:");
 		System.out.println("1: Yes");
 		System.out.println("2: No");
 		additionalChoice = scan.nextInt();
+		
 		if (additionalChoice == 1) {
 			quiz();
 		}
@@ -58,6 +63,7 @@ public class CAI4 {
 	
 	private void displayCompletionMessage() {
 		double score = (getcorrectCount() / 10.0) * 100;
+		
 		if(score >= 75) {
 			System.out.println("Your score was " + score + "%");
 			System.out.println("Congratulations! You are ready to go to the next level!");
@@ -73,8 +79,10 @@ public class CAI4 {
 			
 		
 	}
+	
 	private void displayIncorrectResponse() {
 		responseNum = rand.nextInt(4);
+		
 		switch(responseNum) {
 		case 0:
 			System.out.println("No. Please Try Again.");
@@ -91,8 +99,10 @@ public class CAI4 {
 		}
 		
 	}
+	
 	private void displayCorrectResponse() {
 		responseNum = rand.nextInt(4);
+		
 		switch(responseNum) {
 		case 0:
 			System.out.println("Very good!");
@@ -108,9 +118,11 @@ public class CAI4 {
 			break;
 		}
 	}
+	
 	private void isAnswerCorrect() {
 		int userNum = getuserAnswer();
 		int answer = getAnswer();
+		
 		if (userNum == answer) {
 			displayCorrectResponse();
 			setcorrectCount();
@@ -119,45 +131,57 @@ public class CAI4 {
 			displayIncorrectResponse();
 		}
 	}
+	
 	private void readResponse() {
 		num3 = scan.nextInt();
 		setuserAnswer(num3);
 	}
+	
 	private void askQuestion() {
 		num1 = generateQuestionArgument();
 		num2 = generateQuestionArgument();
 		setAnswer(num1, num2);
 		System.out.println("What is " + num1 + " times "+ num2 + "?");
 	}
+	
 	private void quiz() {
-		readDifficulty();
 		correctCount = 0;
+		readDifficulty();
+		
 		for(int i = 0; i < 10; i++) {
 			System.out.print("Question " + (i + 1) + ": ");
 			askQuestion();
 			readResponse();
 			isAnswerCorrect();
 		}
+		
 		displayCompletionMessage();
 	}
+	
 	private void setAnswer(int num1, int num2) {
 		Answer = num1 * num2;
 	}
+	
 	public int getAnswer() {
 		return Answer;
 	}
+	
 	private void setuserAnswer(int num) {
 		userAnswer = num;
 	}
+	
 	public int getuserAnswer() {
 		return userAnswer;
 	}
+	
 	private void setcorrectCount() {
 		correctCount = correctCount + 1;;
 	}
+	
 	public int getcorrectCount() {
 		return correctCount;
 	}
+	
 	public static void main(String[] args) {
 		CAI4 app = new CAI4();
 		app.quiz();
