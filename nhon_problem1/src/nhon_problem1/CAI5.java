@@ -98,6 +98,7 @@ public class CAI5 {
 			
 		
 	}
+	
 	private void displayIncorrectResponse() {
 		responseNum = rand.nextInt(4);
 		
@@ -117,6 +118,7 @@ public class CAI5 {
 		}
 		
 	}
+	
 	private void displayCorrectResponse() {
 		responseNum = rand.nextInt(4);
 		
@@ -135,6 +137,7 @@ public class CAI5 {
 			break;
 		}
 	}
+	
 	private void isAnswerCorrect() {
 		if(typeChoice >= 1 && typeChoice <=3 || fifthChoice >=0 && fifthChoice <=2) {
 				int userNum = getuserAnswer();
@@ -161,6 +164,7 @@ public class CAI5 {
 			}	
 		}
 	}
+	
 	private void readResponse() {
 		if(typeChoice >=1 && typeChoice <=3) {
 			num3 = scan.nextInt();
@@ -182,6 +186,7 @@ public class CAI5 {
 		}
 		
 	}
+	
 	private void askQuestion() {
 		if(typeChoice == 4) {
 			divnum1 = generateQuestionArgument();
@@ -251,6 +256,7 @@ public class CAI5 {
 			break;
 		}	
 	}
+	
 	private void quiz() {
 		correctCount = 0;
 		fifthChoice = 10;
@@ -267,6 +273,7 @@ public class CAI5 {
 		
 		displayCompletionMessage();
 	}
+	
 	private void setAnswer() {
 		switch(typeChoice) {
 		case 1:
