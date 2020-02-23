@@ -26,7 +26,7 @@ public class CAI5 {
 	
 	
 	private void readProblemType() {
-		System.out.println("Choose a difficulty rating:");
+		System.out.println("Choose a question type:");
 		System.out.println("1: Addition only");
 		System.out.println("2: Multiplication only");
 		System.out.println("3: Subtraction only");
@@ -237,6 +237,7 @@ public class CAI5 {
 		readDifficulty();
 		readProblemType();
 		correctCount = 0;
+		fifthChoice = 10;
 		for(int i = 0; i < 10; i++) {
 			System.out.print("Question " + (i + 1) + ": ");
 			askQuestion();
